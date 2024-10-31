@@ -1,7 +1,7 @@
 import { MapPin, Calendar, ArrowRight, Settings2, X } from "lucide-react" 
 import { Button } from "../../components/button"
 import { useState } from "react"
-import { DayPicker } from "react-day-picker"
+import { DateRange, DayPicker } from "react-day-picker"
 import "react-day-picker/dist/style.css";
 import { format } from "date-fns";
 

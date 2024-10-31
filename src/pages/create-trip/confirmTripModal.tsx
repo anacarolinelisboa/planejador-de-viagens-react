@@ -1,5 +1,6 @@
 import { X, User, Mail } from "lucide-react"  
 import { Button } from "../../components/button"
+import { FormEvent } from "react"
 
 interface ConfirmTripModalProps{
     closeConfirmTripModal: () => void

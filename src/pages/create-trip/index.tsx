@@ -4,6 +4,7 @@ import { InviteGuestsModal } from "./inviteGuestsModal"
 import { ConfirmTripModal } from "./confirmTripModal"
 import { FirstSteps } from "./firstSteps"
 import { InviteGuestsSteps } from "./inviteGuestsSteps"
+import { DateRange } from "react-day-picker"
 // import { api } from "../../lib/axios"
 
 export function CreateTripPage() {
@@ -12,12 +13,12 @@ export function CreateTripPage() {
     const [isGuestsModalOpen, setIsGuestsModalOpen] = useState(false)
     const [isConfirmTripModalOpen, setIsConfirmTripModalOpen] = useState(false) 
 
-    const [destination, setDestination] = useState(false)
-    const [ownerEmail, setOwnerEmail] = useState(false)
-    const [ownerName, setOwnerName] = useState(false)
-    const [eventStartAndEndDates, setEventStartAndEndDates] = useState(false)
+    const [destination, setDestination] = useState<string | false>(false);
+    const [ownerEmail, setOwnerEmail] = useState<string | false>(false);
+    const [ownerName, setOwnerName] = useState<string | false>(false);
+    const [eventStartAndEndDates, setEventStartAndEndDates] = useState<DateRange | undefined>(undefined)
 
-    const [emailsToInvite, setEmailsToInvite] = useState([])
+    const [emailsToInvite, setEmailsToInvite] = useState<string[]>([]) // define o tipo como array de strings
 
     function openGuestsInput(){
         setIsGuestsInputOpen(true);
@@ -43,6 +44,11 @@ export function CreateTripPage() {
         const data = new FormData(event.currentTarget)
         const email = data.get('email')
 
+        // Verifica se email é uma string
+        if (typeof email !== 'string' || !email) {
+            return;
+        }
+        
         if(!email){
         return
         }
